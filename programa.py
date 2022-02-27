@@ -36,12 +36,12 @@ input('\n(Press any key to continue)')
 
 print('\nBEGIN...')
 matchs = 0
-linha = 0
+i = 0
 for dict_pass in bruteforce:
-    linha += 1
+    i += 1
     if dict_pass == user_pass or dict_pass.upper() == user_pass or dict_pass.lower() == user_pass or\
             dict_pass.capitalize() == user_pass:
-        print(f'>>> MATCH found on line: {linha}, value: {dict_pass}')
+        print(f'>>> MATCH found on line: {i}, value: {dict_pass}')
         matchs += 1
 
 if matchs == 0:

@@ -1,4 +1,4 @@
-# jean 24/02/2022
+# jean modesto 02/2022
 import os
 import time
 
@@ -10,14 +10,10 @@ if os.name == 'posix':
 else:
     os.system('cls')
 
-print('<Pass BruteForce Test>')
-print('Esse programa destina-se a testar uma senha em relação a um dicionário de senhas')
-print('--------------')
-# Printing the os name
-print("os name is :", os.name)
-print('-------------- (c)02/2022 - jean \n\n')
+print('<Testing Passwords>')
+print('------------------- (c)02/2022 - https://github.com/jeanmodesto \n\n')
 
-senha = input('Digite a senha a testar: ')
+user_pass = input('Type the password to test: ')
 
 # https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
 dictionary = '10-million-password-list-top-1000000.txt'
@@ -25,31 +21,32 @@ dictionary = '10-million-password-list-top-1000000.txt'
 
 file = open(f'{dictionary}', 'r')
 
-print('Aguarde ! Lendo as senha no dicionário: ', dictionary)
+print('Please wait! Readind dictionary: ', dictionary)
 bruteforce = []
 for line in file:
     line = line.strip()
     bruteforce.append(line)
 file.close()
 
-print('Quantidade de senhas no dicionário: ', len(bruteforce))
-
 time.sleep(2)  # secs
 
-input('Tecle algo para iniciar !!!')
+print('Dictionary lenght: ', len(bruteforce))
 
-print('INÍCIO da execução !')
+input('\n(Press any key to continue)')
+
+print('BEGIN...')
 matchs = 0
 linha = 0
-for testa in bruteforce:
+for dict_pass in bruteforce:
     linha += 1
     # print(f'> linha {linha}: {testa}')
-    if testa == senha:
-        print('MATCH da senha na linha: ', linha)
+    if dict_pass == user_pass or dict_pass.upper() == user_pass or dict_pass.lower() == user_pass or\
+            dict_pass.capitalize() == user_pass:
+        print(f'>>> MATCH found on line: {linha}, value: {dict_pass}')
         matchs += 1
 
 if matchs == 0:
-    print('nenhum MATCH !')
+    print('>>> NO MATCH IN DICTIONARY !')
 
-print('FIM da execução !')
+print('END...')
 quit()

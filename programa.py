@@ -1,4 +1,5 @@
-# jean modesto 02/2022
+# https://github.com/jeanmodesto
+# (c) 02/2022
 import os
 import time
 
@@ -10,18 +11,17 @@ if os.name == 'posix':
 else:
     os.system('cls')
 
-print('<Testing Passwords>')
-print('------------------- (c)02/2022 - https://github.com/jeanmodesto \n\n')
+print('<Testing Password>')
+print('------------------- (c)02/2022, for educational purposes only \n\n')
 
 user_pass = input('Type the password to test: ')
 
 # https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
 dictionary = '10-million-password-list-top-1000000.txt'
-# dictionary = 'dictionary_teste.txt'
 
-file = open(f'{dictionary}', 'r')
 
 print('Please wait! Readind dictionary: ', dictionary)
+file = open(f'{dictionary}', 'r')
 bruteforce = []
 for line in file:
     line = line.strip()
@@ -34,12 +34,11 @@ print('Dictionary lenght: ', len(bruteforce))
 
 input('\n(Press any key to continue)')
 
-print('BEGIN...')
+print('\nBEGIN...')
 matchs = 0
 linha = 0
 for dict_pass in bruteforce:
     linha += 1
-    # print(f'> linha {linha}: {testa}')
     if dict_pass == user_pass or dict_pass.upper() == user_pass or dict_pass.lower() == user_pass or\
             dict_pass.capitalize() == user_pass:
         print(f'>>> MATCH found on line: {linha}, value: {dict_pass}')
@@ -48,5 +47,5 @@ for dict_pass in bruteforce:
 if matchs == 0:
     print('>>> NO MATCH IN DICTIONARY !')
 
-print('END...')
+print('\nEND...')
 quit()
